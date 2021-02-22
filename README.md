@@ -49,7 +49,7 @@ How to install software
     prompt on Windows 8, go to the start menu, type cmd and then
     ctrl+shift+click on the cmd search result.
 
-         Command Prompt: @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+         Command Prompt: @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/jpmendezf/setup-ionic-android-studio/main/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
 2.  Install the [BoxStarter](http://boxstarter.org/) Chocolatey package
 
@@ -66,7 +66,7 @@ How to install software
     run to install the rest of the software and configure it. Run the
     gist file from the Boxstarter Shell:
 
-         Install-BoxStarterPackage -PackageName  https://gist.githubusercontent.com/digitaldrummerj/3fe2eb057004b6742b89/raw/3da48d349c313684077d7103547dfe79f7052617/IonicSetup  -DisableReboots
+         Install-BoxStarterPackage -PackageName  https://raw.githubusercontent.com/jpmendezf/setup-ionic-android-studio/main/IonicSetup  -DisableReboots
 
 -   **NOTE:** If you want to install any of the optional software you
     will need to fork the gist file and remove the \# in front of the
