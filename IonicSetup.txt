@@ -1,0 +1,123 @@
+#########################
+# This gist is meant to be used to install everything needed to get up and running with the Ionic Framework on Windows using Chocolatey (http://chocolatey.org)
+# Read "How to use this Gist File" section below for instructions.
+#########################
+
+
+#########################
+# NOTE : for those familiar with Chocolatey, there are a couple of custom packages used as part of the install that are not published and are waiting on maintainers to make updates to their packages.
+#########################
+
+#---------------------------
+# How to use this Gist File
+#---------------------------
+#
+# Install Chocolatey from http://www.chocolatey.org.  Command is on the front-page of the site.
+#
+# Install the BoxStarter Chocolatey package
+# after install chocolatey, the command is cinst BoxStarter
+#
+# close the cmd prompt or powershell prompt that you opened to install Chocolatey and BoxStarter
+#
+#
+#---------------------------
+# END REQUIRED PRE-WORK
+#---------------------------
+
+#---------------------------
+# START OF SCRIPT THAT DOES THE INSTALLS
+#---------------------------
+
+#*****************
+# install nodejs
+#*****************
+choco install nodejs -y # https://chocolatey.org/packages/nodejs
+
+#*****************
+# install git command line
+#*****************
+choco install git -y # https://chocolatey.org/packages/git
+
+#*****************
+# install gradle
+#*****************
+choco install gradle -y
+
+
+#*****************
+# install android sdk
+# unfortunately the Android sdk exe silent install puts it in %LocalAppData%\Android 
+# the package also doesn't add the android tools and platform-tools into the path.  I did that below.  Maintainer has been contacted.
+# Installed as part of android studio package dependency
+#*****************
+choco install android-sdk  #https://chocolatey.org/packages/android-sdk
+
+
+#********************
+# Installs Anroid studio without SDK
+#*********************
+choco install AndroidStudio -InstallArguments "/AddToDesktop:false /PinnedToTaskbar:false" #https://chocolatey.org/packages/androidstudio
+
+#*****************
+# install Google Chrome
+# needed for testing ionic in a browser and debugging when deployed to an Android device
+#*****************
+choco install GoogleChrome -y # https://chocolatey.org/packages/GoogleChrome
+
+#*****************
+# install Visual Studio Code
+# great free editor that I really like
+#*****************
+choco install visualstudiocode -y # https://chocolatey.org/packages/visualstudiocode
+
+
+#-------------------------
+# OPTIONAL
+#-------------------------
+# 
+#***********************
+# only need if not using Visual Studio 2015 Android Emulator
+# installs genymotion.  Don't install inside of a virtual machine
+#***********************
+#choco install genymotion #https://chocolatey.org/packages/genymotion 
+
+#-------------------------
+# END OPTIONAL
+#-------------------------
+
+#-------------------------
+# Install node, npm, bower, gulp, cordova, and ionic
+#-------------------------
+
+Write-Host 'Installing Cordova.  This may take a few minutes'
+cmd /c "refreshenv && npm install -g cordova"
+
+Write-Host 'Installing Bower.  This may take a few minutes'
+cmd /c "refreshenv && npm install -g bower"
+
+Write-Host 'Installing Gulp.  This may take a few minutes'
+cmd /c "refreshenv && npm install -g gulp"
+
+Write-Host 'Installing Ionic.  This may take a few minutes'
+cmd /c "refreshenv && npm install -g ionic"
+
+cmd /c "refreshenv && node -v "
+cmd /c "refreshenv && npm -v "
+cmd /c "refreshenv && bower -v "
+cmd /c "refreshenv && gulp -v "
+cmd /c "refreshenv && cordova -v"
+cmd /c "refreshenv && ionic -v"
+
+#-------------------------
+# End Install node, npm, bower, gulp, cordova, and ionic
+#-------------------------
+
+#-------------------------
+# Install Android SDK Apis
+#-------------------------
+
+cmd /c "refreshenv && android update sdk -a -u -t platform-tools,android-23,build-tools-23.0.3,extra-google-webdriver"
+
+#-------------------------
+# End Install Android SDK Apis
+#-------------------------
